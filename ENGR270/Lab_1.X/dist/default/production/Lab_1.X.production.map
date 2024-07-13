@@ -1,0 +1,89 @@
+Microchip MPLAB XC8 PIC(R) Assembler V2.46
+
+Linker command line:
+
+-W-3 --edf=/Applications/microchip/xc8/v2.46/pic/dat/20240104201356_en.msgs \
+  -cs -h+dist/default/production/Lab_1.X.production.sym \
+  --cmf=dist/default/production/Lab_1.X.production.cmf -z -Q18F1220 \
+  -o/tmp/xcIZFaTbf/driver_tmp_3.o --fixupoverflow=error \
+  -ver=XC8 PIC(R) Assembler --fixupoverflow=lstwarn \
+  -Mdist/default/production/Lab_1.X.production.map -E1 --acfsm=1493 \
+  -ACODE=00h-0FFFh -ACONST=00h-0FFFh -ASMALLCONST=0100h-01FFhx15 \
+  -AMEDIUMCONST=0100h-0FFFh -ACOMRAM=00h-07Fh -AABS1=00h-0FFh \
+  -ABIGRAM=00h-0FFh -ARAM=080h-0FFh -ABANK0=080h-0FFh -ASFR=0F80h-0FFFh \
+  -ABIGSFR=0F80h-0FFFh -ACONFIG=0300000h-0300000h -AIDLOC=0200000h-0200007h \
+  -AEEDATA=0F00000h-0F000FFh build/default/production/main.o 
+
+Object code version is 3.11
+
+Machine type is 18F1220
+
+
+
+                Name                               Link     Load   Length Selector   Space Scale
+build/default/production/main.o
+                config                           300001   300001        D        0       4
+                __absolute__                          0        0       3A        0       0
+
+TOTAL           Name                               Link     Load   Length     Space
+        CLASS   CODE           
+
+        CLASS   CONST          
+
+        CLASS   SMALLCONST     
+
+        CLASS   MEDIUMCONST    
+
+        CLASS   COMRAM         
+
+        CLASS   ABS1           
+
+        CLASS   BIGRAM         
+
+        CLASS   RAM            
+
+        CLASS   BANK0          
+
+        CLASS   SFR            
+
+        CLASS   BIGSFR         
+
+        CLASS   CONFIG         
+                config                           300001   300001        D         4
+
+        CLASS   IDLOC          
+
+        CLASS   EEDATA         
+
+        CLASS   UNCLASSED
+                __absolute__                          0        0       3A         0
+
+
+SEGMENTS        Name                           Load    Length   Top    Selector   Space  Class
+
+
+
+UNUSED ADDRESS RANGES
+
+        Name                Unused          Largest block    Delta
+        BANK0            000080-0000FF               80
+        BIGRAM           00003A-0000FF               C6
+        BIGSFR           000F80-000FFF               80
+        CODE             00003A-000FFF              FC6
+        COMRAM           00003A-00007F               46
+        CONFIG           300000-300000                1
+        CONST            00003A-000FFF              FC6
+        EEDATA           F00000-F000FF              100
+        IDLOC            200000-200007                8
+        MEDIUMCONST      000100-000FFF              F00
+        RAM              000080-0000FF               80
+        SFR              000F80-000FFF               80
+        SMALLCONST       000100-000FFF              100
+
+                                  Symbol Table
+
+__H__absolute__ __absolute__ 00003A  __Hconfig       config       30000E
+__Hspace_0      (abs)        00003A  __Hspace_4      (abs)        60000F
+__L__absolute__ __absolute__ 000000  __Lconfig       config       000000
+__Lspace_0      (abs)        000000  __Lspace_4      (abs)        000000
+isa$std         (abs)        000001  isa$xinst       (abs)        000000

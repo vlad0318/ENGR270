@@ -1,0 +1,58 @@
+Disassembly Listing for Lab_1
+Generated From:
+/Users/vladyslavrevutskyy/MPLABXProjects/Lab_1.X/dist/default/debug/Lab_1.X.debug.elf
+Jul 13, 2024 3:25:14 PM
+
+---  /Users/vladyslavrevutskyy/MPLABXProjects/Lab_1.X/main.asm  -----------------------------------------
+                                                  1:     ;---------------------------------------------------------------------------
+                                                  2:     ; FILE: Intro.asm
+                                                  3:     ; DESC: Experiment 1 ? Simple Counter
+                                                  4:     ; DATE: 5-18-06
+                                                  5:     ; AUTH: Class
+                                                  6:     ; DEVICE: PICmicro (PIC18F1220)
+                                                  7:     ;---------------------------------------------------------------------------
+                                                  8:         list p=18f1220 ; Set processor type
+                                                  9:         radix hex ; Sets the default radix for data exp.
+                                                  10:        ; Disable Watchdog timer, Low V. Prog, and RA6 as a clock
+                                                  11:        config WDT=OFF, LVP=OFF, OSC = INTIO2
+                                                  12:    #define PORTA 0xF80
+                                                  13:    #define PORTB 0xF81
+                                                  14:    #define TRISA 0xF92
+                                                  15:    #define TRISB 0xF93
+                                                  16:    #define ADCON1 0xFC1
+                                                  17:    #define COUNT 0x080
+                                                  18:    #define LASTIN 0x081
+                                                  19:    #define INPUT 0x082
+                                                  20:    #define TEMP 0x083
+                                                  21:        org 0x000 ; Set the program origin (start) to absolute 0x000
+                                                  22:    ; Initialize all I/O ports
+0000  6A80     CLRF PORTA, ACCESS                 23:        CLRF PORTA ; Initialize PORTA
+0002  6A81     CLRF PORTB, ACCESS                 24:        CLRF PORTB ; Initialize PORTB
+0004  0E7F     MOVLW 0x7F                         25:        MOVLW 0x7F ; Set all A/D Converter Pins as
+0006  6EC1     MOVWF ADCON1, ACCESS               26:        MOVWF ADCON1 ; digital I/O pins
+0008  0E00     MOVLW 0x0                          27:        MOVLW 0x00 ; Value used to initialize data direction
+000A  6E93     MOVWF TRISB, ACCESS                28:        MOVWF TRISB ; Set Port B RB<7:0> as outputs
+000C  0E01     MOVLW 0x1                          29:        MOVLW 0x01 ; Value used to initialize data direction
+000E  6E92     MOVWF TRISA, ACCESS                30:        MOVWF TRISA ; Set Port A Pin 0 RA<0> as input
+0010  0E00     MOVLW 0x0                          31:        MOVLW 0x00 ; W = 0
+0012  6F80     MOVWF 0x80, BANKED                 32:        MOVWF COUNT ; COUNT = WREG
+0014  6F81     MOVWF 0x81, BANKED                 33:        MOVWF LASTIN ; LASTIN = WREG
+                                                  34:    Loop:
+0016  CF80     MOVFF PORTA, 0x82                  35:        MOVFF PORTA, INPUT ; INPUT = PORTA
+001A  5182     MOVF 0x82, W, BANKED               36:        MOVF INPUT, 0 ; W = PORTA
+001C  1981     XORWF 0x81, W, BANKED              37:        XORWF LASTIN, 0 ; W = W XOR LASTIN
+001E  0B01     ANDLW 0x1                          38:        ANDLW 0x1 ; W = W AND 0x1
+0020  C082     MOVFF 0x82, 0x81                   39:        MOVFF INPUT, LASTIN ; LASTIN = PORTA
+0024  6F83     MOVWF 0x83, BANKED                 40:        MOVWF TEMP ; TEMP = W
+0026  B183     BTFSC 0x83, 0, BANKED              41:        BTFSC TEMP, 0 ; If TEMP<0> = 0 Then Skip Next Command
+0028  EC18     CALL 0x30, 0                       42:        CALL IncL
+002C  EF0B     GOTO 0x16                          43:        GOTO Loop
+                                                  44:    IncL:
+0030  5180     MOVF 0x80, W, BANKED               45:        MOVF COUNT, 0 ; W = COUNT
+0032  0F01     ADDLW 0x1                          46:        ADDLW 1 ; W = W + 1
+0034  6F80     MOVWF 0x80, BANKED                 47:        MOVWF COUNT ; COUNT = W
+0036  6E81     MOVWF PORTB, ACCESS                48:        MOVWF PORTB ; PORTB = W
+0038  0012     RETURN 0                           49:        RETURN
+                                                  50:        end ; Indicates the end of the program. 
+                                                  51:    
+                                                  52:    

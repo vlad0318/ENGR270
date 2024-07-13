@@ -1,0 +1,39 @@
+__Hconfig 30000E 0 CONFIG 4
+__Lconfig 0 0 CONFIG 4
+isa$xinst 0 0 ABS 0
+isa$std 1 0 ABS 0
+__H__absolute__ 3A 0 ABS 0
+__L__absolute__ 0 0 ABS 0
+__Hspace_0 3A 0 ABS 0
+__Lspace_0 0 0 ABS 0
+__Hspace_4 60000F 0 ABS 0
+__Lspace_4 0 0 ABS 0
+%segments
+%locals
+build/default/debug/main.o
+main.asm
+23 0 0 ABS 0
+24 2 0 ABS 0
+25 4 0 ABS 0
+26 6 0 ABS 0
+27 8 0 ABS 0
+28 A 0 ABS 0
+29 C 0 ABS 0
+30 E 0 ABS 0
+31 10 0 ABS 0
+32 12 0 ABS 0
+33 14 0 ABS 0
+35 16 0 ABS 0
+36 1A 0 ABS 0
+37 1C 0 ABS 0
+38 1E 0 ABS 0
+39 20 0 ABS 0
+40 24 0 ABS 0
+41 26 0 ABS 0
+42 28 0 ABS 0
+43 2C 0 ABS 0
+45 30 0 ABS 0
+46 32 0 ABS 0
+47 34 0 ABS 0
+48 36 0 ABS 0
+49 38 0 ABS 0
